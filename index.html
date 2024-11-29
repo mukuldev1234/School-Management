@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>School Management System</h1>
+
+    <!-- Add School Form -->
+    <section class="add-school-section">
+      <h2>Add a New School</h2>
+      <form id="add-school-form">
+        <input type="text" id="school-name" placeholder="School Name" required />
+        <input type="text" id="school-address" placeholder="School Address" required />
+        <input type="number" id="school-lat" placeholder="Latitude" step="any" required />
+        <input type="number" id="school-lng" placeholder="Longitude" step="any" required />
+        <button type="submit">Add School</button>
+      </form>
+    </section>
+
+    <!-- List Schools Section -->
+    <section class="list-schools-section">
+      <h2>Schools Near You</h2>
+      <form id="fetch-schools-form">
+        <input type="number" id="user-lat" placeholder="Your Latitude" step="any" required />
+        <input type="number" id="user-lng" placeholder="Your Longitude" step="any" required />
+        <button type="submit">Find Schools</button>
+      </form>
+      <ul id="schools-list"></ul>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
