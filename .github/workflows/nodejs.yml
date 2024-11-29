@@ -1,4 +1,4 @@
-name: Node.js CI/CD
+name: Node.js CI/CD on Windows
 
 on:
   push:
@@ -10,46 +10,46 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
-      # Checkout code from repository
+      # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Set up Node.js
+      # Step 2: Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16' # Specify the Node.js version
+          node-version: '16' # Specify Node.js version
           cache: 'npm'
 
-      # Install dependencies
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Linting (Optional: Add eslint configuration to your project)
+      # Step 4: Linting (Optional)
       - name: Run Linting
         run: npm run lint
 
-      # Run tests
-      - name: Run tests
+      # Step 5: Run Tests
+      - name: Run Tests
         run: npm test
 
-      # Build application (Optional: If you have a build step)
-      - name: Build application
+      # Step 6: Build the Application (Optional)
+      - name: Build Application
         run: npm run build
 
-      # Deploy to the hosting environment (Optional)
-      - name: Deploy application
-        env:
-          NODE_ENV: production
-        run: |
-          echo "Deployment process would go here..."
-          # Add deployment scripts here (e.g., Docker build, upload to hosting, etc.)
-
-      # Verify API Endpoints (Optional)
-      - name: API Testing with Postman
+      # Step 7: API Endpoint Tests (Optional)
+      - name: Run API Tests with Newman
         run: |
           echo "Running Postman API tests..."
           newman run path/to/your-postman-collection.json
+
+      # Step 8: Deploy to Production (Optional)
+      - name: Deploy Application
+        env:
+          NODE_ENV: production
+        run: |
+          echo "Deploying application..."
+          # Add your deployment scripts or commands here
